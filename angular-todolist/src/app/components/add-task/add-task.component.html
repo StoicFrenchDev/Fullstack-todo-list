@@ -1,0 +1,43 @@
+<div>
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="submit-form" *ngIf="!submitted">
+
+
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" formControlName="title" />
+      <div *ngIf="taskForm.controls.title.invalid && taskForm.controls.title.touched" class="error">
+        Title is required.
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input class="form-control" id="description" formControlName="description" />
+    </div>
+
+
+    <div class="form-group">
+      <label for="priority">Priority</label>
+      <select class="form-control" id="priority" formControlName="priority">
+        <option value="" disabled>Select Priority</option>
+        <option value="Low">Low</option>
+        <option value="Moderate">Moderate</option>
+        <option value="High">High</option>
+        <option value="Epic">Epic</option>
+      </select>
+      <div *ngIf="taskForm.controls.priority.invalid && taskForm.controls.priority.touched" class="error">
+        Priority is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
+
+  <div *ngIf="submitted" class="alert alert-success">
+    <h4>The new task was submitted successfully!</h4>
+    <button type="button" (click)="newTask()" class="btn btn-secondary">New Task</button>
+  </div>
+
+</div>
