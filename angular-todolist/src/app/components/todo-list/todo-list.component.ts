@@ -35,4 +35,18 @@ export class TodoListComponent implements OnInit{
     this.currentTask = todoList;
     this.currentIndex = index;
   }
+
+  searchTitle(): void {
+    this.currentTask = {};
+    this.currentIndex = -1;
+
+    this.todoListService.findByTitle(this.title)
+      .subscribe({
+        next: (data) => {
+          this.todoList = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
+  }
 }

@@ -1,5 +1,5 @@
 <div class="list row">
-    <!-- <div class="col-md-8">
+    <div class="col-md-8">
       <div class="input-group mb-3">
         <input
           type="text"
@@ -17,24 +17,32 @@
           </button>
         </div>
       </div>
-    </div> -->
-    <div class="col-md-6">
-      <h4>Tutorials List</h4>
-      <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let task of todoList; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setActiveTask(task, i)"
-        >
-          {{ task.title }}
-        </li>
-      </ul>
     </div>
-    <div class="col-md-6">
-      <!-- <app-tutorial-details
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Tasks List</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Priority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let task of todoList; let i = index" 
+                [class.active]="i == currentIndex"
+                (click)="setActiveTask(task, i)">
+              <td>{{ task.title }}</td>
+              <td>{{ task.priority }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+      <app-task-details
         [viewMode]="true"
         [currentTask]="currentTask"
-      ></app-tutorial-details> -->
+      ></app-task-details>
+      </div>
     </div>
   </div>

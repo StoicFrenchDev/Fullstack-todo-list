@@ -49,7 +49,7 @@ export class AddTaskComponent implements OnInit {
   }
 
   newTask(): void {
-    this.submitted = false; // Reset submitted flag for new task
+    this.submitted = false; 
     this.taskForm.reset({
       title: '',
       description: '',
